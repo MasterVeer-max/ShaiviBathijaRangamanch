@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Shaivi Rangmanch Pravesh</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --black:#070707;
+  --gold:#d4af37;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Inter,sans-serif;
+  background:var(--black);
+  color:var(--gold);
+}
+
+/* NAV */
+nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  background:rgba(0,0,0,0.85);
+  backdrop-filter:blur(10px);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 25px;
+  z-index:10;
+  border-bottom:1px solid rgba(212,175,55,0.25);
+}
+
+nav a{
+  margin-left:15px;
+  text-decoration:none;
+  color:var(--gold);
+  font-size:14px;
+}
+
+/* DESKTOP MENU */
+.desktop-menu{
+  display:flex;
+  gap:15px;
+}
+
+/* HAMBURGER */
+.menu-toggle{
+  font-size:26px;
+  cursor:pointer;
+  color:var(--gold);
+  display:none;
+}
+
+/* MOBILE MENU */
+.menu{
+  display:none;
+  position:absolute;
+  top:60px;
+  right:20px;
+  background:rgba(0,0,0,0.95);
+  border:1px solid rgba(212,175,55,0.3);
+  border-radius:10px;
+  padding:10px;
+  flex-direction:column;
+  min-width:160px;
+}
+
+.menu a{
+  display:block;
+  padding:10px;
+  text-decoration:none;
+  color:var(--gold);
+  border-bottom:1px solid rgba(212,175,55,0.1);
+}
+
+.menu a:last-child{border:none;}
+.menu.show{display:flex;}
+
+@media(max-width:768px){
+  .desktop-menu{display:none;}
+  .menu-toggle{display:block;}
+}
+
+/* PARTICLES */
+.particles{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+  z-index:0;
+  overflow:hidden;
+}
+
+.particles span{
+  position:absolute;
+  width:5px;
+  height:5px;
+  background:rgba(212,175,55,0.75);
+  border-radius:50%;
+  box-shadow:0 0 10px rgba(212,175,55,0.6);
+  animation:floatUp linear infinite;
+  will-change: transform;
+}
+
+@keyframes floatUp{
+  0%{transform:translateY(110vh);opacity:0;}
+  10%{opacity:1;}
+  100%{transform:translateY(-20vh);opacity:0;}
+}
+
+/* HERO (NO BUBBLE EFFECTS ANYMORE) */
+.hero{
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:20px;
+  position:relative;
+  background:
+  linear-gradient(rgba(0,0,0,0.88),rgba(0,0,0,0.95)),
+  url('https://images.unsplash.com/photo-1617196034796-73dfa7b0c8b7?auto=format&fit=crop&w=1600&q=80');
+  background-size:cover;
+  background-position:center;
+}
+
+.hero > div{position:relative;z-index:2;}
+
+/* SECTIONS */
+section{
+  padding:90px 20px;
+  max-width:1000px;
+  margin:auto;
+}
+
+h2{
+  font-family:"Playfair Display",serif;
+  margin-bottom:20px;
+}
+
+.card{
+  background:rgba(255,255,255,0.03);
+  padding:20px;
+  border-radius:12px;
+  border:1px solid rgba(212,175,55,0.2);
+  color:#fff;
+}
+
+/* TIMELINE */
+.timeline-item{
+  display:flex;
+  gap:15px;
+  padding:18px;
+  margin-bottom:10px;
+  background:rgba(255,255,255,0.03);
+  border-radius:12px;
+  border:1px solid rgba(212,175,55,0.2);
+  color:#fff;
+}
+
+.icon{
+  width:42px;
+  height:42px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--gold);
+  color:black;
+  border-radius:50%;
+}
+
+/* MAP */
+.map{
+  width:100%;
+  height:300px;
+  border:0;
+  border-radius:12px;
+  margin-top:15px;
+}
+
+/* FADE */
+.fade{
+  opacity:0;
+  transform:translateY(20px);
+  transition:1s;
+}
+
+.fade.show{
+  opacity:1;
+  transform:translateY(0);
+}
+</style>
+</head>
+
+<body>
+
+<div class="particles"></div>
+
+<!-- NAV -->
+<nav>
+  <div><b>Shaivi Rangmanch</b></div>
+
+  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+  <div class="menu" id="menu">
+    <a href="#home">Home</a>
+    <a href="#journey">Journey</a>
+    <a href="#kathak">Kathak</a>
+    <a href="#timeline">Timeline</a>
+    <a href="#guru">Guru</a>
+    <a href="#family">Gratitude</a>
+    <a href="#venue">Venue</a>
+  </div>
+
+  <div class="desktop-menu">
+    <a href="#home">Home</a>
+    <a href="#journey">Journey</a>
+    <a href="#kathak">Kathak</a>
+    <a href="#timeline">Timeline</a>
+    <a href="#guru">Guru</a>
+    <a href="#family">Gratitude</a>
+    <a href="#venue">Venue</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="home" class="hero">
+  <div class="fade">
+    <h1>Kathak Rangmanch Pravesh</h1>
+    <p>Shaivi Bathija, Disciple of Guru Sudeshna Ganguly</p>
+
+    <div class="card" style="margin-top:20px;">
+      <p><b>Sunday, August 30, 2026</b></p>
+      <p><b>Time:</b> 11:00 AM</p>
+      <p>Patricia Reser Center for the Arts</p>
+      <p>Beaverton, Oregon</p>
+    </div>
+  </div>
+</section>
+
+<!-- JOURNEY -->
+<section id="journey" class="fade">
+<h2>Shaivi’s Journey</h2>
+
+<div class="card">
+
+<p style="line-height:1.8;">
+Shaivi’s dedication to Kathak under Guru Sudeshna Ganguly reflects years of discipline,
+practice, and artistic growth. Through years of learning, rehearsing, and performing,
+she has developed not only as a classical dancer but also as a confident young artist.
+
+Her Rangmanch Pravesh marks a significant milestone in her journey, celebrating her
+commitment, perseverance, and love for the art of Kathak.
+</p>
+
+<br>
+
+<img
+  src="Images/shaivi.jpg"
+  alt="Shaivi Bathija Kathak Performance"
+  style="
+    width:100%;
+    max-width:500px;
+    display:block;
+    margin:0 auto;
+    border-radius:16px;
+    border:2px solid rgba(212,175,55,0.35);
+    box-shadow:0 0 30px rgba(212,175,55,0.25);
+  "
+>
+
+</div>
+</section>
+
+<!-- KATHAK -->
+<section id="kathak" class="fade">
+<h2>Kathak & Rangmanch Pravesh</h2>
+
+<div class="card">
+Kathak is one of the eight major classical dance forms of India and originated in North India. The word Kathak comes from the Sanskrit word "Katha," meaning story, and "Kathakar," meaning storyteller. Traditionally, Kathak dancers narrated stories from Indian epics, mythology, and folklore through expressive movements, intricate footwork, graceful spins, and facial expressions.
+
+<br><br>
+
+Over time, Kathak evolved into a sophisticated classical art form that beautifully blends rhythm, music, storytelling, and emotion. Known for its intricate footwork, mesmerizing spins, expressive gestures, and the rhythmic sounds of ghungroos (ankle bells), Kathak continues to captivate audiences worldwide.
+
+<br><br>
+
+Rangmanch Pravesh marks the entry of a trained dancer onto the professional stage after years of dedication under a Guru. It is a milestone of discipline, artistry, and transformation.
+
+<br><br>
+
+This debut honors the Guru-Shishya tradition and celebrates years of devotion, practice, and artistic growth.
+
+<br><br>
+
+Today we celebrate Shaivi Bathija’s Kathak Rangmanch Pravesh.
+</div>
+
+</section>
+
+<!-- TIMELINE -->
+<section id="timeline" class="fade">
+<h2>Event Timeline</h2>
+
+<div class="timeline-item"><div class="icon">🎉</div><div><h3>Arrival</h3></div></div>
+<div class="timeline-item"><div class="icon">📸</div><div><h3>Photos & Mingling</h3></div></div>
+<div class="timeline-item"><div class="icon">💺</div><div><h3>Seating</h3></div></div>
+<div class="timeline-item"><div class="icon">🎭</div><div><h3>Performance I (Dances 1–3)</h3></div></div>
+<div class="timeline-item"><div class="icon">🍱</div><div><h3>Lunch</h3></div></div>
+<div class="timeline-item"><div class="icon">✨</div><div><h3>Performance II (Dances 4–6)</h3></div></div>
+<div class="timeline-item"><div class="icon">📷</div><div><h3>Photos with Shaivi</h3></div></div>
+<div class="timeline-item"><div class="icon">🍵</div><div><h3>Tea & Snacks</h3></div></div>
+
+</section>
+
+<!-- GURU -->
+<section id="guru" class="fade">
+<h2>Guru</h2>
+<div class="card">
+Guru Sudeshna Ganguly is a respected Kathak exponent and founder of Rhythms Dance Academy, guiding students through discipline, tradition, and expressive mastery of Kathak.
+</div>
+</section>
+
+<!-- FAMILY -->
+<section id="family" class="fade">
+<h2>Family & Gratitude</h2>
+<div class="card">
+<ul style="color:white;line-height:1.8;">
+<li>Veer Lulla</li>
+<li>Karishma Kinger</li>
+<li>Yogesh Lulla</li>
+<li>Keerthie Bathija</li>
+<li>Suraj Bathija</li>
+<li>Kripa Lulla</li>
+<li>Malini Lulla</li>
+<li>Lalith Lulla</li>
+</ul>
+</div>
+</section>
+
+<!-- VENUE -->
+<section id="venue" class="fade">
+<h2>Venue</h2>
+<div class="card">
+Patricia Reser Center for the Arts, Beaverton, Oregon
+
+<iframe class="map"
+src="https://www.google.com/maps?q=Patricia+Reser+Center+for+the+Arts&output=embed"></iframe>
+</div>
+</section>
+
+<script>
+function toggleMenu(){
+  document.getElementById("menu").classList.toggle("show");
+}
+
+/* fade animation */
+const elements=document.querySelectorAll(".fade");
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting)e.target.classList.add("show");
+  });
+});
+elements.forEach(el=>observer.observe(el));
+
+/* PARTICLES THAT SPEED UP WITH SCROLL */
+const container=document.querySelector(".particles");
+
+let scrollSpeed = 1;
+
+window.addEventListener("scroll", ()=>{
+  scrollSpeed = Math.min(8, 1 + window.scrollY / 200);
+});
+
+for(let i=0;i<50;i++){
+  const dot=document.createElement("span");
+  dot.style.left=Math.random()*100+"vw";
+  dot.style.animationDuration=(6+Math.random()*8)+"s";
+
+  /* BASE SPEED + SCROLL SPEED EFFECT */
+  dot.style.animationDelay=Math.random()*5+"s";
+
+  dot.style.transformOrigin="center";
+  container.appendChild(dot);
+}
+
+/* Apply scroll-speed influence */
+setInterval(()=>{
+  document.querySelectorAll(".particles span").forEach(p=>{
+    let current = parseFloat(p.dataset.speed || 1);
+    let newSpeed = scrollSpeed;
+
+    p.dataset.speed = newSpeed;
+
+    p.style.filter = `brightness(${1 + newSpeed/4})`;
+  });
+}, 100);
+
+</script>
+
+</body>
+</html>
